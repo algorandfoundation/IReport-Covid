@@ -1,0 +1,7 @@
+{
+  "name": "ireport-covid-data",
+  "version": "1.0.0",
+  "dependencies": {
+    "algosdk": "^1.4.1"
+  }
+}
