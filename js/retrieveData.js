@@ -100,6 +100,11 @@ async function getTransactionBatch(fromRnd, toRnd) {
     // make an API call to get the transactions
     let txs = await algod.transactionByAddress(address,fromRnd,toRnd,maxTxnPerCall);
 
+    // there might not have any tx in range in which case sdk returns empty object ...
+    if (typeof txs.transactions === 'undefined') {
+        return [ ];
+    }
+
     // If we got all the transactions, just return them
     if (fromRnd == toRnd || txs.transactions.length < maxTxnPerCall) {
         return txs.transactions;
